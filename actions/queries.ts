@@ -74,6 +74,7 @@ export const homePageQuery = `query{
     whyInfiniaSolar{
       tag
       title
+      description
       imagesCollection{
         items{
           title,
@@ -90,6 +91,31 @@ export const homePageQuery = `query{
         }
       }
     }
-    
+    testimonials{
+      tag
+      title
+      cardsCollection{
+        items{
+          title
+          description
+          counter
+          image{
+            url
+          }
+          bulletPoints
+        }
+      }
+    }
+    customerSection{
+      tag
+      title
+      description
+      imagesCollection{
+        items{
+          title,
+          url
+        }
+      }
+    }
   }
 }`;

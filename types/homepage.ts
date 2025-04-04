@@ -1,5 +1,6 @@
 export interface Image {
     url: string;
+    title?: string;
     description?: string;
 }
 
@@ -44,6 +45,8 @@ export interface HomePage {
     whyRe: Section;
     whyConsultation: Section;
     whyInfiniaSolar: Section;
+    testimonials: Section;
+    customerSection: Section;
 }
 
 export interface HomePageData {

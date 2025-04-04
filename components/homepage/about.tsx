@@ -1,11 +1,12 @@
 "use client";
+import { filterAboutCardProps } from "@/lib/utils";
+import {
+  Image as ImageType,
+  OurNumbers
+} from "@/types/homepage";
 import Image from "next/image";
 import { Typewriter } from "react-simple-typewriter";
 import AboutCard, { AboutCardProps } from "./aboutCard";
-import AnimatedButton from "../ui/animatedButton";
-import Text from "../ui/text";
-import { Card, CardCollection, Image as ImageType, OurNumbers } from "@/types/homepage";
-import { filterAboutCardProps } from "@/lib/utils";
 
 const About: React.FC<OurNumbers> = ({
   title,
@@ -13,7 +14,7 @@ const About: React.FC<OurNumbers> = ({
   imagesCollection,
   buttonText,
   cardsCollection,
-  ourNumbersTitleList
+  ourNumbersTitleList,
 }) => {
   if (
     !title ||
@@ -29,23 +30,25 @@ const About: React.FC<OurNumbers> = ({
       </div>
     );
   }
-  const aboutCardItems: AboutCardProps[] = filterAboutCardProps(cardsCollection);
-  const images:ImageType[] = imagesCollection.items.map((item) => ({
+  const aboutCardItems: AboutCardProps[] =
+    filterAboutCardProps(cardsCollection);
+  const images: ImageType[] = imagesCollection.items.map((item) => ({
     url: item.url,
     description: item.description,
   }));
+  // console.log(aboutCardItems.length)
   return (
     <div className="grid grid-cols-2 gap-20 lg:h-screen m-4">
       {/* left */}
-      <div className="relative flex flex-col items-start justify-center gap-20 h-full">
+      <div className="relative col-span-2 flex flex-col items-center justify-center gap-20 h-full">
         <Image
           src={images[0].url}
           alt="About Image"
           width={1920}
           height={1080}
-          className="absolute max-h-full -left-10 bg-cover -z-10"
+          className="absolute inset-0 max-h-full bg-cover -z-10"
         ></Image>
-        <div className="text-5xl font-bold min-h-[100px]">
+        <div className="text-6xl font-bold min-h-[100px]">
           We are <br />
           <Typewriter
             words={ourNumbersTitleList}
@@ -58,33 +61,34 @@ const About: React.FC<OurNumbers> = ({
           ></Typewriter>
         </div>
         {/* cards */}
-        <div className="grid grid-cols-4 gap-4 mt-4 w-full ">
-          {aboutCardItems.map((item,index) => (
+        <div className="grid grid-cols-5 gap-4 mt-4 w-full ">
+          {aboutCardItems.map((item, index) => (
             <AboutCard
-              title={item.title}  
+              title={item.title}
               description={item.description}
               counter={item.counter}
               symbol={item.symbol}
-              key={index} />
+              key={index}
+            />
           ))}
         </div>
       </div>
       {/* right */}
-      <div className="flex relative flex-col justify-center h-full gap-10 overflow-hidden">
-        <Image
-          src={images[1].url}
-          alt="Amplus Logo"
-          width={1920}
-          height={1080}
-          className="absolute bg-cover left-10 p-20"
-        ></Image>
-        <Text
-          content={description}
-        />
-        <AnimatedButton className="rounded-full">
-          {buttonText}
-        </AnimatedButton>
-      </div>
+      {/* <div className="flex relative flex-col justify-center h-full gap-10 overflow-hidden">
+          <Image
+            src={images[1].url}
+            alt="Amplus Logo"
+            width={1920}
+            height={1080}
+            className="absolute bg-cover left-10 p-20"
+          ></Image>
+          <Text
+            content={description}
+          />
+          <AnimatedButton className="rounded-full">
+            {buttonText}
+          </AnimatedButton>
+        </div> */}
     </div>
   );
 };

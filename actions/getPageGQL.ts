@@ -1,3 +1,4 @@
+import { HomePage } from "@/types/homepage";
 import fetchGraphQL from "./contentful-graphql";
 
 export async function getPageGQL(query: string):Promise<HomePage> {

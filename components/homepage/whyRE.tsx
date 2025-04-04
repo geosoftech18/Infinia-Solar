@@ -1,6 +1,7 @@
 import { Card as CardType, Section } from "@/types/homepage";
 import { Card, CardContent, CardTitle } from "../ui/card";
 import Image from "next/image";
+import BulletPoint from "@/public/assets/bulletPoint";
 
 export type WhyREProps = Pick<CardType, "title" | "description" | "image">;
 
@@ -27,39 +28,48 @@ const WhyRE: React.FC<Section> = ({
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center p-6 lg:p-12">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center p-6 lg:p-12 ">
       {/* Left Section: Tag, Title, and Image */}
       <div className="flex flex-col items-start gap-6">
-        <div className="text-sm font-bold text-blue-500 uppercase">{tag}</div>
-        <h2 className="text-3xl lg:text-5xl font-bold text-gray-800">
-          {title}
-        </h2>
-        <img
+        <div className="text-sm font-semibold text-customGreen uppercase flex items-center">
+          <BulletPoint />
+          {tag}
+        </div>
+        <h2 className="text-3xl lg:text-5xl font-semibold ">{title}</h2>
+        <Image
           src={imagesCollection.items[0].url}
           alt="Renewable Energy"
-          className="w-full max-w-md object-contain"
+          width={500}
+          height={500}
+          className="w-full  object-contain"
         />
       </div>
 
       {/* Right Section: Description, Cards, and Button */}
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 h-full justify-between pt-16">
         <p className="text-gray-600 text-base lg:text-lg">{description}</p>
 
         {/* Cards */}
         <div className="grid grid-rows-3 gap-4">
           {cardsCollection.items.map((card, index) => (
-            <WhyRECard
-              key={index}
-              title={card.title}
-              description={card.description}
-              image={card.image}
-            />
+            <div key={index}>
+              <WhyRECard
+                title={card.title}
+                description={card.description}
+                image={card.image}
+              />
+              {/* Add a divider except after the last card */}
+              {index < cardsCollection.items.length - 1 && (
+                <div className="my-1 border-t border-gray-300"></div>
+              )}
+            </div>
           ))}
         </div>
 
         {/* Button */}
-        <button className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition">
-            {buttonText}
+        <button className="relative overflow-hidden bg-blue-600 text-black px-6 py-3 rounded-full group w-2/5">
+          <span className="absolute inset-0 bg-black transform scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-center "></span>
+          <span className="relative z-10 text-white">{buttonText}</span>
         </button>
       </div>
     </div>
@@ -76,12 +86,12 @@ const WhyRECard: React.FC<WhyREProps> = ({ title, description, image }) => {
   }
 
   return (
-    <Card className="flex flex-row items-center p-4 bg-white shadow-md rounded-lg">
-      <CardTitle >
-        <Image src={image.url} alt={title} width={100} height={100} />
+    <Card className="flex border-none shadow-none flex-row items-center p-4 bg-white  rounded-lg">
+      <CardTitle>
+        <Image src={image.url} alt={title} width={100} height={100} className="hover:animate-rotation"/>
       </CardTitle>
-      <CardContent  >
-        <div>{title}</div>
+      <CardContent>
+        <div className="font-semibold">{title}</div>
         <div>{description}</div>
       </CardContent>
     </Card>

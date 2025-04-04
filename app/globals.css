@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@tailwind utilities;
 
 @custom-variant dark (&:is(.dark *));
 
@@ -108,6 +109,46 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-customGreen: oklch(0.692 0.168 145.68);
+  --color-customMint:oklch(0.97 0.0238 159.16);
+  --color-customBlue: oklch(0.25 0.07 251.94);
+  --color-customBlueLight: oklch(0.31 0.07 251.35);
+  --color-customGrey: oklch(0.51 0.02 238.15 / 1);
+  --color-customGold: oklch(0.85 0.1698 86.77);
+  --animate-slideLeftToRight: slideLeftToRight 0.3s ease-in-out;
+  --animate-opacityNoneTo100: opacityNoneTo100 0.5s ease-in-out;
+  --animate-rotation: rotation 0.2s ease-in-out ;
+
+  @keyframes slideLeftToRight {
+    0%,
+    10% {
+      width: 13%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+
+  @keyframes opacityNoneTo100 {
+    0%,
+    50% {
+      opacity: 0%;
+    }
+    100% {
+      opacity: 100%;
+    }
+  }
+
+  @keyframes rotation {
+    0%,
+    50% {
+      transform: rotateY(180deg);
+    },
+    100% {
+      transform: rotateY(0deg);
+    }
+    
+  }
 }
 
 @layer base {
@@ -122,3 +163,16 @@
 /* * {
   outline: 1px solid red;
 } */
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spin {
+  animation: spin 2s linear infinite;
+}

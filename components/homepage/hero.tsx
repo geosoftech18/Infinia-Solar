@@ -1,14 +1,14 @@
 import Image from "next/image";
-import Heading from "../ui/heading";
-import { Button } from "../ui/button";
+import { Image as ImageType} from "@/types/homepage";
 import AnimatedButton from "../ui/animatedButton";
+import Heading from "../ui/heading";
 
 interface HeroProps {
   heroTitle: string;
   heroSubtitle: string;
   heroSubtitle2: string;
   heroButtonText: string;
-  heroImage: Image;
+  heroImage: ImageType;
 }
 
 const Hero: React.FC<HeroProps> = ({
