@@ -1,7 +1,6 @@
+import Container from "@/components/container";
 import type { Metadata } from "next";
 import "./globals.css";
-import Container from "@/components/container";
-import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Infinia Solar",

@@ -14,7 +14,6 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({
   heroTitle,
   heroSubtitle,
-  heroSubtitle2,
   heroButtonText,
   heroImage,
 }) => {

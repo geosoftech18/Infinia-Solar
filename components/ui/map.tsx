@@ -81,12 +81,12 @@ export const Map = () => {
   // };
 
   // Handle click events
-  const handleStateClick = (stateId: string, stateInfo?: StateData) => {
-    console.log(`{Clicked on ${stateId}, stateInfo}`);
-    alert(
-      `{You clicked ${stateId}\nCapital: ${stateInfo?.customData?.capital}\nPopulation: ${stateInfo?.customData?.population}}`
-    );
-  };
+  // const handleStateClick = (stateId: string, stateInfo?: StateData) => {
+  //   console.log(`{Clicked on ${stateId}, stateInfo}`);
+  //   alert(
+  //     `{You clicked ${stateId}\nCapital: ${stateInfo?.customData?.capital}\nPopulation: ${stateInfo?.customData?.population}}`
+  //   );
+  // };
 
   return (
     <div style={{ width: "100%", maxWidth: "800px", margin: "0 auto" }}>

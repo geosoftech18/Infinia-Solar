@@ -2,9 +2,8 @@
 
 import {
   Card,
-  CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import {
   Carousel,

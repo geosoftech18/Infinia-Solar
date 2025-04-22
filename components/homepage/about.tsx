@@ -2,11 +2,9 @@
 import { filterAboutCardProps } from "@/lib/utils";
 import { Image as ImageType, OurNumbers } from "@/types/homepage";
 import Image from "next/image";
-import { Typewriter } from "react-simple-typewriter";
-import AboutCard, { AboutCardProps } from "./aboutCard";
-import Text from "../ui/text";
 import AnimatedButton from "../ui/animatedButton";
 import Heading from "../ui/heading";
+import AboutCard, { AboutCardProps } from "./aboutCard";
 
 const About: React.FC<OurNumbers> = ({
   tag,
