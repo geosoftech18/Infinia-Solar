@@ -16,9 +16,9 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
       <Button
         size="lg"
         className={`relative z-10 transition-colors duration-500 
-          text-white bg-orange-400 overflow-hidden
-          group-hover:border-2 group-hover:border-orange-400
-          group-hover:!bg-white group-hover:text-orange-400
+          text-white bg-customOrange overflow-hidden
+          group-hover:border-2 group-hover:border-customOrange
+          group-hover:!bg-white group-hover:text-customOrange
           ${className}`}
       >
         {/* Moving light effect inside the button */}

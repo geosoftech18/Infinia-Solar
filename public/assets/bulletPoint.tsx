@@ -11,7 +11,7 @@ const BulletPoint: React.FC = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       {/* Static Line */}
-      <rect y="10" width="50" height="2" fill="#4AAB3D"></rect>
+      <rect y="10" width="50" height="2" fill="#F4851F"></rect>
 
       {/* Rotating Arrow */}
       <rect
@@ -20,7 +20,7 @@ const BulletPoint: React.FC = () => {
         y="5"
         width="11"
         height="11"
-        fill="#4AAB3D"
+        fill="#F4851F"
         style={{
           transformOrigin: "55.5px 10.5px", 
         }}

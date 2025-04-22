@@ -4,13 +4,13 @@ import {
   Card,
   CardDescription,
   CardHeader,
-  CardTitle
+  CardTitle,
 } from "@/components/ui/card";
 import {
   Carousel,
   CarouselApi,
   CarouselContent,
-  CarouselItem
+  CarouselItem,
 } from "@/components/ui/carousel";
 import { Section } from "@/types/homepage";
 import Autoplay from "embla-carousel-autoplay";
@@ -52,12 +52,17 @@ const CustomerSection: React.FC<Section> = ({
     <div className="flex flex-col items-center justify-center w-full py-16 ">
       <div className="max-w-6xl flex flex-col items-center text-center justify-center">
         {/* Section Header */}
-        <h2 className="flex text-xl items-center  mb-8">
+        {/* <h2 className="flex text-xl items-center  mb-8">
           <div>{tag}</div>
-        </h2>
-        <h2 className=" w-2/4 text-3xl text-indigo-800 text-center font-semibold  mb-8">
-          {title}
-        </h2>
+        </h2> */}
+        <div className="text-3xl lg:text-6xl font-semibold text-customBlue h-40">
+          <span>{title[0]}</span>
+          <span className="text-customOrange whitespace-nowrap">
+            {title[1]+" "}
+            <br></br>
+          </span>
+          <span className="">{title[2]}</span>
+        </div>
         <div className="text-xl">{description}</div>
 
         {/* Carousel */}
@@ -72,26 +77,26 @@ const CustomerSection: React.FC<Section> = ({
             ]}
           >
             {/* Carousel Content */}
-            <CarouselContent className="mx-auto h-[50vh]">
+            <CarouselContent className="mx-auto h-[30vh]">
               {imagesCollection?.items.map((testimonial, index) => (
-                <CarouselItem key={index} className="basis-1/5">
+                <CarouselItem key={index} className="basis-1/6 h-full">
                   <Card
                     key={index}
-                    className="w-full max-h-fit  max-w-4xl mx-auto shadow-lg  border-none p-8"
+                    className="w-full max-h-fit  max-w-4xl mx-auto shadow-lg  border-none p-4"
                   >
                     <CardHeader className="flex flex-col items-center gap-4">
-                      <CardTitle className="text-2xl font-semibold flex items-center  gap-5">
+                      <CardTitle className="text-2xl font-semibold flex items-center  gap-5 h-30">
                         <Image
                           src={testimonial.url || ""}
                           alt={testimonial.title || ""}
                           width={100}
                           height={100}
-                          className="bg-cover rounded-full"
+                          className="w-40"
                         />
                       </CardTitle>
-                      <CardDescription className="text-lg  italic">
+                      {/* <CardDescription className="text-lg  italic">
                         {testimonial.title}
-                      </CardDescription>
+                      </CardDescription> */}
                     </CardHeader>
                   </Card>
                 </CarouselItem>

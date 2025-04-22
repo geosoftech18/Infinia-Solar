@@ -8,6 +8,7 @@ import WhyConsultation from "@/components/homepage/whyConsultation";
 import WhyInfiniaSolar from "@/components/homepage/whyInfiniaSolar";
 import Testimonials from "@/components/homepage/testimonials";
 import CustomerSection from "@/components/homepage/customerSection";
+import MapPage from "@/components/homepage/IndiaMap";
 
 export default async function Home() {
   const homepageData:HomePage = await getPageGQL(homePageQuery);
@@ -24,9 +25,10 @@ export default async function Home() {
       <About {...{ ...homepageData.ourNumbers, ourNumbersTitleList: homepageData.ourNumbersTitleList }} />
       <WhyRE {...homepageData.whyRe}/>
       <WhyConsultation {...homepageData.whyConsultation}/>
-      <WhyInfiniaSolar {...homepageData.whyInfiniaSolar}/>
+      {/* <WhyInfiniaSolar {...homepageData.whyInfiniaSolar}/> */}
       <Testimonials {...homepageData.testimonials}/>
       <CustomerSection {...homepageData.customerSection}/>
+      <MapPage {...homepageData.mapSection}/>
     </div>
   );
 }

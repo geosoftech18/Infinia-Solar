@@ -11,7 +11,7 @@ import {
   Carousel,
   CarouselApi,
   CarouselContent,
-  CarouselItem
+  CarouselItem,
 } from "@/components/ui/carousel";
 import BulletPoint from "@/public/assets/bulletPoint";
 import { Section } from "@/types/homepage";
@@ -50,7 +50,7 @@ const Testimonials: React.FC<Section> = ({ title, cardsCollection, tag }) => {
       {/* Section Header */}
       <h2 className="flex items-center text-customGreen font-bold mb-8">
         <BulletPoint />
-        <div>{tag}</div>
+        <div className="text-customOrange">{tag}</div>
       </h2>
       <h2 className="text-6xl w-2/4 text-center font-semibold text-white mb-8">
         {title}
@@ -71,11 +71,43 @@ const Testimonials: React.FC<Section> = ({ title, cardsCollection, tag }) => {
               <CarouselItem key={index} className="basis-1/3">
                 <Card
                   key={index}
-                  className="w-full h-full max-w-4xl mx-auto shadow-lg bg-customBlueLight border-none p-8"
+                  className="w-full h-full max-w-4xl mx-auto shadow-lg bg-customBlueLight border-none p-8 rounded-lg"
                 >
+                  {/* Card Header */}
                   <CardHeader className="flex flex-col items-start gap-4">
+                    {/* Video or Image */}
                     <CardTitle className="text-2xl font-semibold flex items-center text-white gap-5">
-                      <div className="relative w-20 h-20 rounded-full border-2 border-customGrey">
+                      {testimonial.image?.url ? (
+                        <video
+                          width="320"
+                          height="240"
+                          controls
+                          preload="none"
+                          className="rounded-lg"
+                        >
+                          <source
+                            src={testimonial.image?.url || ""}
+                            type="video/mp4"
+                          />
+                          Your browser does not support the video tag.
+                        </video>
+                      ) : (
+                        <div className="relative w-20 h-20 rounded-full border-2 border-customGrey">
+                          <Image
+                            src={testimonial.image?.url || ""}
+                            alt={testimonial.image?.description || ""}
+                            width={100}
+                            height={100}
+                            className="absolute bg-cover rounded-full"
+                          />
+                          <Quote className="w-6 h-6 absolute -bottom-2 left-1/2 -translate-x-1/2 text-customGreen" />
+                        </div>
+                      )}
+                    </CardTitle>
+
+                    {/* Testimonial Title and Bullet Points */}
+                    <CardDescription className="text-lg text-white/70 italic">
+                      {/* <div className="relative w-20 h-20 rounded-full border-2 border-customGrey">
                         <Image
                           src={testimonial.image?.url || ""}
                           alt={testimonial.image?.description || ""}
@@ -84,39 +116,48 @@ const Testimonials: React.FC<Section> = ({ title, cardsCollection, tag }) => {
                           className="absolute bg-cover rounded-full"
                         />
                         <Quote className="w-6 h-6 absolute -bottom-2 left-1/2 -translate-x-1/2 text-customGreen" />
-                      </div>
+                      </div> */}
                       <div className="flex flex-col items-start">
-                        <div>{testimonial.title}</div>
+                        <div className="font-bold text-xl">
+                          {testimonial.title}
+                        </div>
                         <div className="text-sm text-white/80 flex">
                           {testimonial.bulletPoints?.join(", ")}
                         </div>
                       </div>
-                    </CardTitle>
-                    <CardDescription className="text-lg text-white/70 italic">
-                      {testimonial.description}
                     </CardDescription>
                   </CardHeader>
-                  <CardContent className="flex gap-4">
-                    <div className="text-white font-semibold text-lg">
-                      Rating:
+
+                  {/* Card Content */}
+                  <CardContent className="flex flex-col gap-4">
+                    {/* Description */}
+                    <div className="text-white/90">
+                      {testimonial.description}
                     </div>
-                    <div className="flex gap-1">
-                      {Array.from({
-                        length: testimonial.counter ? testimonial.counter : 5,
-                      }).map((_, index) => (
-                        <span key={index} className="text-customGold text-lg">
-                          ★
-                        </span>
-                      ))}
-                      {Array.from({
-                        length: testimonial.counter
-                          ? 5 - testimonial.counter
-                          : 0,
-                      }).map((_, index) => (
-                        <span key={index} className="text-gray-500 text-lg">
-                          ★
-                        </span>
-                      ))}
+
+                    {/* Rating */}
+                    <div className="flex items-center gap-2">
+                      <div className="text-white font-semibold text-lg">
+                        Rating:
+                      </div>
+                      <div className="flex gap-1">
+                        {Array.from({
+                          length: testimonial.counter ? testimonial.counter : 5,
+                        }).map((_, index) => (
+                          <span key={index} className="text-customGold text-lg">
+                            ★
+                          </span>
+                        ))}
+                        {Array.from({
+                          length: testimonial.counter
+                            ? 5 - testimonial.counter
+                            : 0,
+                        }).map((_, index) => (
+                          <span key={index} className="text-gray-500 text-lg">
+                            ★
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </CardContent>
                 </Card>

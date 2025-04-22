@@ -1,21 +1,29 @@
 import { Card } from "@/types/homepage";
 import CountUp from "../ui/countUp";
 
-export type AboutCardProps = Pick<Card, "title" | "description" | "counter" | "symbol">;
+export type AboutCardProps = Pick<
+  Card,
+  "title" | "description" | "counter" | "symbol"
+>;
 
-const AboutCard: React.FC<AboutCardProps> = ({ title, description, counter, symbol }) => {
+const AboutCard: React.FC<AboutCardProps> = ({
+  title,
+  description,
+  counter,
+  symbol,
+}) => {
   return (
-    <div className="bg-[#165D8E] rounded-lg text-white p-6 flex flex-col items-start justify-between shadow-lg aspect-square">
+    <div className="bg-customBlue rounded-lg text-white p-6 flex flex-col items-center justify-center  gap-5 shadow-lg m-10 aspect-square">
       {/* Counter Section */}
-      <div className="text-4xl font-bold mb-4">
+      <div className="text-2xl font-bold flex items-center justify-center">
         <CountUp initialValue={0} finalValue={counter || 100} symbol={symbol} />
+        <div className="text-3xl font-semibold ">{title}</div>
       </div>
 
       {/* Title */}
-      <div className="text-5xl font-semibold mb-2">{title}</div>
 
       {/* Description */}
-      <div className="text-3xl text-white/80">{description}</div>
+      <div className="text-2xl text-white/80">{description}</div>
     </div>
   );
 };

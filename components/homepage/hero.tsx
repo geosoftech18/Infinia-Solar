@@ -28,15 +28,15 @@ const Hero: React.FC<HeroProps> = ({
         className="w-full h-full absolute object-cover object-center -z-10 rounded-sm "
       ></Image>
       <div className="absolute inset-0 bg-black/20 backdrop-blur-xs -z-10 rounded-sm"></div>
-      <div className="pl-10 w-full flex flex-col gap-10">
+      <div className="pl-10 w-full flex flex-col gap-20">
         <Heading
           title={heroTitle}
-          titleColour="text-orange-400"
+          titleColour="text-white"
           subtitle={heroSubtitle}
-          subtitle2={heroSubtitle2}
-          className="w-1/2 text-white gap-2 "
+          // subtitle2={heroSubtitle2}
+          className="w-2/3 text-white gap-10"
         />
-        <AnimatedButton className="rounded-full">
+        <AnimatedButton className="rounded-full w-1/4 h-10">
           {heroButtonText}
         </AnimatedButton>
       </div>

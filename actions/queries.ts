@@ -54,6 +54,7 @@ export const homePageQuery = `query{
     whyConsultation{
       tag
       title
+      description
       imagesCollection{
         items{
           title,
@@ -116,6 +117,10 @@ export const homePageQuery = `query{
           url
         }
       }
+    }
+    mapSection{
+      title,
+      description
     }
   }
 }`;

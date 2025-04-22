@@ -17,13 +17,14 @@ import SliderButton from "../ui/sliderButton";
 const WhyConsultation: React.FC<Section> = ({
   tag,
   title,
+  description,
   imagesCollection,
   cardsCollection,
 }) => {
-  console.log(cardsCollection?.items.length);
+  // console.log(cardsCollection?.items.length);
   const [scrollPosition, setScrollPosition] = useState(0);
 
-  if (!title || !imagesCollection || !cardsCollection) {
+  if (!title || !tag || !description || !imagesCollection || !cardsCollection) {
     return (
       <div className="flex items-center justify-center h-screen bg-red-100 text-red-600 text-lg font-bold">
         Error fetching data. Please try again later.
@@ -82,10 +83,19 @@ const WhyConsultation: React.FC<Section> = ({
         <div className="w-full flex flex-col gap-4 mt-20">
           <div className="flex items-center gap-2 ">
             <BulletPoint />
-            <div className="text-[#4AAB3D] font-semibold text-lg">{tag}</div>
+            <div className="text-customOrange font-semibold text-lg">{tag}</div>
           </div>
-          <h2 className="text-4xl lg:text-6xl w-1/2 font-bold ">{title}</h2>
+          <div className="text-3xl lg:text-5xl font-semibold text-customBlue ">
+            <span>{title[0]+ " "}</span>
+            <span className="text-customOrange whitespace-nowrap">
+              {title[1] + " "}
+            </span>
+            <span className="">{title[2]}</span>
+          </div>
+          <div className="text-customBlue  text-4xl">{description}</div>
         </div>
+       
+
 
         {/* Carousel */}
         <div className=" mt-10">
@@ -101,7 +111,7 @@ const WhyConsultation: React.FC<Section> = ({
               <CarouselPrevious className=" aspect-square p-2 h-16 w-16 text-black bg-white transition-colors fade-in-40 rounded-md" />
               <CarouselNext className=" aspect-square p-2 h-16 w-16 text-black bg-white transition-colors fade-in-40 rounded-md" />
             </div>
-            <CarouselContent className="mx-auto overflow-hidden">
+            <CarouselContent className="mx-auto py-20">
               {cardsCollection.items.map((card, index) => (
                 <CarouselItem key={index} className="basis-1/3">
                   <CarousalCard key={index} {...card} />
@@ -129,15 +139,15 @@ const CarousalCard = (card: Card) => {
       <div className="absolute inset-0 bg-white rounded-md group-hover:bg-blue-900/70 transition-colors duration-500"></div>
 
       {/* Content */}
-      <div className="relative flex flex-col items-start justify-between w-full h-full p-4 overflow-visible aspect-[3/4] rounded-md">
+      <div className="relative flex flex-col items-start justify-between w-full h-full p-4 overflow-visible aspect-[3/4] rounded-md pt-10">
         <Image
           src={card.image?.url || ""}
           alt={card.title || "Card Icon"}
-          className="  top-0 left-0 p-4 bg-[#4AAB3D] text-white rounded-lg"
+          className=" aspect-square absolute  -top-16  left-0 p-4 bg-customBlue text-white rounded-lg"
           width={100}
           height={100}
         />
-        <h3 className="text-2xl font-bold group-hover:text-white mb-2">
+        <h3 className="text-3xl text-customOrange font-bold group-hover:text-white mb-2">
           {card.title}
         </h3>
         <p className="text-lg text-gray-400">{card.description}</p>
@@ -147,7 +157,7 @@ const CarousalCard = (card: Card) => {
               className="group-hover:text-white flex items-center justify-start gap-2"
               key={index}
             >
-              <ChevronRight className="text-[#4AAB3D]" size={16} />
+              <ChevronRight className="text-customOrange" size={16} />
               {item}
             </div>
           ))}

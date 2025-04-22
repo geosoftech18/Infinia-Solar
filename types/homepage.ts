@@ -23,7 +23,7 @@ export interface CardCollection {
 
 export interface Section {
     tag: string;
-    title: string;
+    title: string[];
     description?: string;
     buttonText?: string;
     imagesCollection?: ImageCollection;
@@ -47,6 +47,7 @@ export interface HomePage {
     whyInfiniaSolar: Section;
     testimonials: Section;
     customerSection: Section;
+    mapSection:Section;
 }
 
 export interface HomePageData {
